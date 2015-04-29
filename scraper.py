@@ -51,6 +51,6 @@ response = requests.get(url).content
 #print response #show the response
 
 r = json.loads(response)
-print r.next
+print r['next']
 
 #test for friendships between attendees
