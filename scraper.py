@@ -71,7 +71,7 @@ url = baseUrl+'/'+fbEvent+"/attending?access_token="+fbToken
 #test for friendships between attendees
 for i, attendee in enumerate(attendeesIds):
     print "element", i, "is", attendee
-    for y in range (i+1, enumerate(attendeesIds)):
+    for y in range (i+1, len(attendeesIds)):
       rUrl = baseUrl+'/'+attendee+'/friends/'+attendeesIds[y]+'?access_token=fbToken' 
       print rUrl
       rel = requests.get(rUrl).content
