@@ -40,6 +40,8 @@ def next(nextUrl):
     scraperwiki.sql.save(['attendee'], attendeeData)
   try:
     next(nR['paging']['next'])
+  except:
+    print 'No next-link'
 
 #get facebook token and evend ID from the morph.io settings
 if 'MORPH_FBTOKEN' in os.environ: #make code conditional on existence of a secret variable
