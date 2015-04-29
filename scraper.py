@@ -21,3 +21,28 @@
 # on morph.io for Python (https://github.com/openaustralia/morph-docker-python/blob/master/pip_requirements.txt) and all that matters
 # is that your final data is written to an Sqlite database called data.sqlite in the current working directory which
 # has at least a table called data.
+
+import scraperwiki
+import os
+import requests
+
+baseUrl = 'https://graph.facebook.com/v2.3'
+
+#get facebook token and evend ID from the morph.io settings
+if 'MORPH_FBTOKEN' in os.environ: #make code conditional on existence of a secret variable
+  fbToken = os.environ['MORPH_FBTOKEN'] #use the secret variable (you can get it from https://developers.facebook.com/tools/explorer/)
+if 'MORPH_FBEVENTID' in os.environ: #make code conditional on existence of a secret variable
+  fbEvent = os.environ['MORPH_FBEVENTID'] #use the secret variable (just copy it from the event URL into the settings)
+
+#test if token and event were importet properly
+print fbevent
+print fbToken
+
+#get attendees of the event
+url = baseUrl+eventId+"/attending?access_token="+$accessToken
+print url
+
+response = requests.get(url).content
+print response
+
+#test for friendships between attendees
