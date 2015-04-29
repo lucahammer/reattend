@@ -25,6 +25,7 @@
 import scraperwiki
 import os
 import requests
+import json
 
 baseUrl = 'https://graph.facebook.com/v2.3'
 
@@ -39,14 +40,17 @@ else:
   print 'Please add the ID of a Facebook event with the name "MORPH_FBEVENT" to the morph.io settings of this scraper'
   
 #test if token and event were importet properly
-print fbEvent
-print fbToken
+#print fbEvent
+#print fbToken
 
 #get attendees of the event
 url = baseUrl+'/'+fbEvent+"/attending?access_token="+fbToken
-print url
+#print url #test if url was created properly
 
 response = requests.get(url).content
-print response
+#print response #show the response
+
+r = json.loads(response)
+print r
 
 #test for friendships between attendees
