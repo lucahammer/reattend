@@ -35,7 +35,7 @@ if 'MORPH_FBEVENTID' in os.environ: #make code conditional on existence of a sec
   fbEvent = os.environ['MORPH_FBEVENTID'] #use the secret variable (just copy it from the event URL into the settings)
 
 #test if token and event were importet properly
-print fbevent
+print fbEvent
 print fbToken
 
 #get attendees of the event
