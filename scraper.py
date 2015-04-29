@@ -30,6 +30,7 @@ import json
 baseUrl = 'https://graph.facebook.com/v2.3'
 
 def next(nextUrl):
+  print nextUrl
   nextResponse = requests.get(nextUrl).content
   nR = json.loads(nextResponse)
   for attendee in nR['data']:
