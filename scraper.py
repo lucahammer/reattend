@@ -28,6 +28,8 @@ import requests
 import json
 
 baseUrl = 'https://graph.facebook.com/v2.3'
+attendeesIds = [526490627,500496573,442029195936418,10204303330976622,825465727516732,847516601944095,100000133660323,984442261569764]
+connections = []
 
 def next(nextUrl):
   print nextUrl
@@ -35,7 +37,8 @@ def next(nextUrl):
   nR = json.loads(nextResponse)
   # print nR
   for attendee in nR['data']:
-    unique_keys = [ 'id' ]
+    attendeesIds.append(attendee['id']) #add ID to global list
+    unique_keys = ['id']
     attendeeData = {
       'id': attendee['id'],
       'name': attendee['name']
@@ -63,7 +66,14 @@ else:
 #get attendees of the event
 url = baseUrl+'/'+fbEvent+"/attending?access_token="+fbToken
 #print url #test if url was created properly
-next(url) #get first page of attendees
-
+###next(url) #get first page of attendees
 
 #test for friendships between attendees
+for i, attendee in enumerate(attendeesIds):
+    print "element", index, "is", workwith
+    for y in range (i+1, enumerate(attendeesIds)):
+      rUrl = baseUrl+'/'+attendee+'/friends/'+attendeesIds[y]+'?access_token=fbToken' 
+      print rUrl
+      rel = requests.get(rUrl).content
+      rr = json.loads(rel)
+      print rr
