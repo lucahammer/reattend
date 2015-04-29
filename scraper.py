@@ -39,7 +39,7 @@ print fbevent
 print fbToken
 
 #get attendees of the event
-url = baseUrl+eventId+"/attending?access_token="+$accessToken
+url = baseUrl+eventId+"/attending?access_token="+accessToken
 print url
 
 response = requests.get(url).content
