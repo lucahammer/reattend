@@ -32,7 +32,7 @@ attendeesIds = []
 connections = []
 
 def next(nextUrl):
-  print nextUrl
+  #print nextUrl
   nextResponse = requests.get(nextUrl).content
   nR = json.loads(nextResponse)
   # print nR
