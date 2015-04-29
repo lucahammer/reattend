@@ -29,6 +29,18 @@ import json
 
 baseUrl = 'https://graph.facebook.com/v2.3'
 
+def next(nextUrl):
+  nextResponse = requests.get(nextUrl).content
+  nR = json.loads(nextResponse)
+  for attendee in nR['data']:
+    attendeeData = {
+      'id' = attendee['id']
+      'name' = attendee['name']
+      }
+    scraperwiki.sql.save(['attendee'], attendeeData)
+  try:
+    next(nR['paging']['next'])
+
 #get facebook token and evend ID from the morph.io settings
 if 'MORPH_FBTOKEN' in os.environ: #make code conditional on existence of a secret variable
   fbToken = os.environ['MORPH_FBTOKEN'] #use the secret variable (you can get it from https://developers.facebook.com/tools/explorer/)
@@ -46,11 +58,7 @@ else:
 #get attendees of the event
 url = baseUrl+'/'+fbEvent+"/attending?access_token="+fbToken
 #print url #test if url was created properly
+next(url) #get first page of attendees
 
-response = requests.get(url).content
-#print response #show the response
-
-r = json.loads(response)
-print r['paging']['next']
 
 #test for friendships between attendees
