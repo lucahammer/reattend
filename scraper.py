@@ -33,7 +33,7 @@ def next(nextUrl):
   print nextUrl
   nextResponse = requests.get(nextUrl).content
   nR = json.loads(nextResponse)
-  print nR
+  # print nR
   for attendee in nR['data']:
     attendeeData = {
       'id': attendee['id'],
