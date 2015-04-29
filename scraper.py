@@ -34,8 +34,8 @@ def next(nextUrl):
   nR = json.loads(nextResponse)
   for attendee in nR['data']:
     attendeeData = {
-      'id' = attendee['id']
-      'name' = attendee['name']
+      'id': attendee['id']
+      'name': attendee['name']
       }
     scraperwiki.sql.save(['attendee'], attendeeData)
   try:
