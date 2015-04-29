@@ -72,7 +72,7 @@ url = baseUrl+'/'+fbEvent+"/attending?access_token="+fbToken
 for i, attendee in enumerate(attendeesIds):
     print "element", i, "is", attendee
     for y in range (i+1, len(attendeesIds)):
-      rUrl = baseUrl+'/'+str(attendee)+'/friends/'+str(attendeesIds[y])+'?access_token=fbToken' 
+      rUrl = baseUrl+'/'+str(attendee)+'/friends/'+str(attendeesIds[y])+'?access_token='+fbToken 
       print rUrl
       rel = requests.get(rUrl).content
       rr = json.loads(rel)
