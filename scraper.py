@@ -80,3 +80,4 @@ for i, attendee in enumerate(attendeesIds):
       rr = json.loads(rel)
       print rr
 '''
+quit()
