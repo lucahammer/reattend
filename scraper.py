@@ -35,11 +35,12 @@ def next(nextUrl):
   nR = json.loads(nextResponse)
   # print nR
   for attendee in nR['data']:
+    unique_keys = [ 'id' ]
     attendeeData = {
       'id': attendee['id'],
       'name': attendee['name']
       }
-    scraperwiki.sql.save(['attendee'], attendeeData)
+    scraperwiki.sql.save(unique_keys, attendeeData)
   try:
     next(nR['paging']['next'])
   except:
