@@ -50,7 +50,7 @@ url = baseUrl+'/'+fbEvent+"/attending?access_token="+fbToken
 response = requests.get(url).content
 #print response #show the response
 
-r = json.dumps(response)
+r = json.loads(response)
 print r.next
 
 #test for friendships between attendees
