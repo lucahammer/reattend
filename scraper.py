@@ -31,11 +31,11 @@ baseUrl = 'https://graph.facebook.com/v2.3'
 #get facebook token and evend ID from the morph.io settings
 if 'MORPH_FBTOKEN' in os.environ: #make code conditional on existence of a secret variable
   fbToken = os.environ['MORPH_FBTOKEN'] #use the secret variable (you can get it from https://developers.facebook.com/tools/explorer/)
-else
+else:
   print 'Please add a Facebook Access Token with the name "MORPH_FBTOKEN" to the morph.io settings of this scraper'
 if 'MORPH_FBEVENTID' in os.environ: #make code conditional on existence of a secret variable
   fbEvent = os.environ['MORPH_FBEVENTID'] #use the secret variable (just copy it from the event URL into the settings)
-else
+else:
   print 'Please add the ID of a Facebook event with the name "MORPH_FBEVENT" to the morph.io settings of this scraper'
   
 #test if token and event were importet properly
