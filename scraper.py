@@ -43,7 +43,7 @@ print fbEvent
 print fbToken
 
 #get attendees of the event
-url = baseUrl+fbEvent+"/attending?access_token="+fbToken
+url = baseUrl+'/'+fbEvent+"/attending?access_token="+fbToken
 print url
 
 response = requests.get(url).content
