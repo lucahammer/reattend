@@ -28,7 +28,7 @@ import requests
 import json
 
 baseUrl = 'https://graph.facebook.com/v2.3'
-attendeesIds = [526490627,500496573,442029195936418,10204303330976622,825465727516732,847516601944095,100000133660323,984442261569764]
+attendeesIds = []
 connections = []
 
 def next(nextUrl):
@@ -66,9 +66,11 @@ else:
 #get attendees of the event
 url = baseUrl+'/'+fbEvent+"/attending?access_token="+fbToken
 #print url #test if url was created properly
-###next(url) #get first page of attendees
+next(url) #get first page of attendees
 
 #test for friendships between attendees
+'''
+Facebook changed its policy regarding friendship data and it isn't available to the public anmyore which makes this scraper kinda useless
 for i, attendee in enumerate(attendeesIds):
     print "element", i, "is", attendee
     for y in range (i+1, len(attendeesIds)):
@@ -77,3 +79,4 @@ for i, attendee in enumerate(attendeesIds):
       rel = requests.get(rUrl).content
       rr = json.loads(rel)
       print rr
+'''
